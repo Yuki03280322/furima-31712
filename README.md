@@ -22,6 +22,8 @@
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | price            | integer    | null: false       |
+| item_name        | text       | null: false       |
+| explanation      | text       | null: false       |
 | category_id      | integer    | null: false       |
 | condition_id     | integer    | null: false       |
 | postage_id       | integer    | null: false       |
@@ -46,7 +48,7 @@
 - belongs_to :item
 - has_one :address
 
-## addresss テーブル
+## addresses テーブル
 
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
