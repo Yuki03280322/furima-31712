@@ -22,8 +22,9 @@
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | price            | integer    | null: false       |
-| item_name        | text       | null: false       |
+| name             | text       | null: false       |
 | explanation      | text       | null: false       |
+| prefecture_id    | integer    | null: false       |
 | category_id      | integer    | null: false       |
 | condition_id     | integer    | null: false       |
 | postage_id       | integer    | null: false       |
@@ -53,7 +54,7 @@
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | postal_code      | string     | null: false       |
-| prefectures_id   | integer    | null: false       |
+| prefecture_id    | integer    | null: false       |
 | city             | string     | null: false       |
 | street_number    | string     | null: false       |
 | building_name    | string     |                   |
