@@ -22,7 +22,7 @@
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | price            | integer    | null: false       |
-| name             | text       | null: false       |
+| name             | string     | null: false       |
 | explanation      | text       | null: false       |
 | prefecture_id    | integer    | null: false       |
 | category_id      | integer    | null: false       |
