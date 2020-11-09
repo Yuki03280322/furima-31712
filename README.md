@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column           | Type   | Option                   |
-| ---------------- | ------ | ------------------------ |
-| nickname         | string | null: false              |
-| password         | string | null: false, default: "" |
-| email            | string | null: false, default: "" |
-| first_name_kanji | string | null: false              |
-| last_name_kanji  | string | null: false              |
-| first_name_kana  | string | null: false              |
-| last_name_kana   | string | null: false              |
-| date_of_birth    | date   | null: false              |
+| Column             | Type   | Option                   |
+| ------------------ | ------ | ------------------------ |
+| nickname           | string | null: false              |
+| encrypted_password | string | null: false, default: "" |
+| email              | string | null: false, default: "" |
+| first_name_kanji   | string | null: false              |
+| last_name_kanji    | string | null: false              |
+| first_name_kana    | string | null: false              |
+| last_name_kana     | string | null: false              |
+| date_of_birth      | date   | null: false              |
 
 ### Association
 - has_many :items
@@ -19,16 +19,15 @@
 
 ## items テーブル
 
-| Column        | Type       | Option            |
-| ------------- | ---------- | ----------------- |
-| price         | integer    | null: false       |
-| category      | string     | null: false       |
-| condition     | string     | null: false       |
-| postage       | string     | null: false       |
-| area          | string     | null: false       |
-| shipping_date | string     | null: false       |
-| image         |            |                   |
-| user_id       | references | foreign_key: true |
+| Column           | Type       | Option            |
+| ---------------- | ---------- | ----------------- |
+| price            | integer    | null: false       |
+| category_id      | integer    | null: false       |
+| condition_id     | integer    | null: false       |
+| postage_id       | integer    | null: false       |
+| area_id          | integer    | null: false       |
+| shipping_date_id | integer    | null: false       |
+| user             | references | foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -38,9 +37,8 @@
 
 | Column   | Type       | Option            |
 | -------- | ---------- | ----------------- |
-| buy_date | datetime   | null: false       |
-| user_id  | references | foreign_key: true |
-| item_id  | references | foreign_key: true |
+| user     | references | foreign_key: true |
+| item     | references | foreign_key: true |
 
 ### Association
 
@@ -52,13 +50,13 @@
 
 | Column           | Type       | Option            |
 | ---------------- | ---------- | ----------------- |
-| postal_code      | integer    | null: false       |
-| prefectures      | string     | null: false       |
+| postal_code      | string     | null: false       |
+| prefectures_id   | integer    | null: false       |
 | city             | string     | null: false       |
 | street_number    | string     | null: false       |
 | building_name    | string     |                   |
-| telephone        | integer    | null: false       |
-| buy_id           | references | foreign_key: true |
+| telephone        | string     | null: false       |
+| buy              | references | foreign_key: true |
 
 ### Association
 - belongs_to :buy
