@@ -7,10 +7,11 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :email, uniqueness: { case_sensitive: true }
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
+  validates :password_confirmation, presence: true
   validates :password_confirmation, :password, confirmation: true
   validates :date_of_birth, presence: true  
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: '全角文字を使用してください' } do
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: '全角文字(漢字,ひらがな,カタカナ)を使用してください' } do
     validates :first_name_kanji
     validates :last_name_kanji
   end
