@@ -69,25 +69,25 @@ RSpec.describe Item, type: :model do
       it "priceの値が¥299以下だと出品できない" do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
 
       it "priceの値が¥10,000,000以上だと出品できない" do
         @item.price = 10,000,000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
 
       it "priceの値が半角数字以外を使用した場合、出品できない" do
         @item.price = "eee"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include("Price Half-width number")
       end
 
       it "priceの値が半角数字以外を使用した場合、出品できない" do
         @item.price = "３３３"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not included in the list")
+        expect(@item.errors.full_messages).to include("Price Half-width number")
       end
     end
     

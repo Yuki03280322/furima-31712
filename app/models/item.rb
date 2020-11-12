@@ -9,11 +9,14 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range' 
+  validates :price, numericality: { with: /\A[0-9]+\z/ , message: 'Half-width number' }
+
   with_options presence: true do
     validates :image
     validates :name
     validates :explanation
-    validates :price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
+    validates :price
     validates :category_id
     validates :condition_id
     validates :postage_id
