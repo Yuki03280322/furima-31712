@@ -1,11 +1,10 @@
- class ItemsController < ApplicationController
-
+class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_id, only: :edit
   before_action :move_to_index, only: :edit
 
   def index
-    @items = Item.all.order(id: "DESC")
+    @items = Item.all.order(id: 'DESC')
   end
 
   def new
@@ -38,7 +37,7 @@
   end
 
   private
-  
+
   def item_params
     params.require(:item).permit(:price, :name, :image, :explanation, :category_id, :condition_id, :postage_id, :prefecture_id, :shipping_date_id).merge(user_id: current_user.id)
   end
@@ -48,9 +47,6 @@
   end
 
   def move_to_index
-    unless user_signed_in? && current_user.id == @item.user_id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless user_signed_in? && current_user.id == @item.user_id
   end
-
 end
