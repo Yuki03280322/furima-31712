@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :buys
+  has_many :addresses, through: :buys
 
   validates :email, uniqueness: { case_sensitive: true }
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
