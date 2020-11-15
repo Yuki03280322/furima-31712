@@ -42,6 +42,12 @@ RSpec.describe ItemBuy, type: :model do
         expect(@item_buy.errors.full_messages).to include("Telephone can't be blank")
       end
 
+      it 'prefecture_idが空だと購入できない' do
+        @item_buy.prefecture_id = nil
+        @item_buy.valid?
+        expect(@item_buy.errors.full_messages).to include("Prefecture can't be blank")
+      end
+
       it 'prefecture_idが1だと購入できない' do
         @item_buy.prefecture_id = 1
         @item_buy.valid?
