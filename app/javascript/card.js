@@ -4,10 +4,7 @@ if(document.URL.match(/buys/)){
     const form = document.getElementById("charge-form");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-
-      const formResult = document.getElementById("charge-form");
-      const formData = new FormData(formResult);
-
+      const formData = new FormData(form);
       const card = {
         number: formData.get("order[number]"),
         exp_month: formData.get("order[exp_month]"),
@@ -18,9 +15,8 @@ if(document.URL.match(/buys/)){
       Payjp.createToken(card, (status, response) => {
         if (status == 200) {
           const token = response.id;
-          const renderDom = document.getElementById("charge-form");
           const tokenObj = `<input value=${token} name='token' type="hidden">`;
-          renderDom.insertAdjacentHTML("beforeend", tokenObj);
+          form.insertAdjacentHTML("beforeend", tokenObj);
         }
 
         document.getElementById("card-number").removeAttribute("name");
