@@ -1,5 +1,4 @@
 class BuysController < ApplicationController
-
   before_action :authenticate_user!
   before_action :set_id
   before_action :move_to_root_path
@@ -12,7 +11,7 @@ class BuysController < ApplicationController
   def create
     @item_buy = ItemBuy.new(buy_params)
     if @item_buy.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       Payjp::Charge.create(
         amount: @item.price,
         card: buy_params[:token],
@@ -26,6 +25,7 @@ class BuysController < ApplicationController
   end
 
   private
+
   def buy_params
     params.permit(:postal_code, :prefecture_id, :city, :street_number, :building_name, :telephone, :token).merge(user_id: current_user.id, item_id: params[:item_id])
   end
@@ -39,9 +39,6 @@ class BuysController < ApplicationController
   end
 
   def soldout_block
-    if @item.buy.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.buy.present?
   end
-
 end

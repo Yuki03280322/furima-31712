@@ -55,8 +55,6 @@ class ItemsController < ApplicationController
   end
 
   def soldout_block
-    if @item.buy.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.buy.present?
   end
 end

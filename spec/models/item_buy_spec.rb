@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe ItemBuy, type: :model do
   before do
-    @item_buy =  FactoryBot.build(:item_buy)
+    @item_buy = FactoryBot.build(:item_buy)
   end
 
   describe '商品購入' do
@@ -45,25 +45,25 @@ RSpec.describe ItemBuy, type: :model do
       it 'prefecture_idが1だと購入できない' do
         @item_buy.prefecture_id = 1
         @item_buy.valid?
-        expect(@item_buy.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item_buy.errors.full_messages).to include('Prefecture must be other than 1')
       end
 
       it 'postal_codeにハイフンが含まれていないと購入できない' do
-        @item_buy.postal_code = 1111111
+        @item_buy.postal_code = 1_111_111
         @item_buy.valid?
-        expect(@item_buy.errors.full_messages).to include("Postal code is invalid")
+        expect(@item_buy.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'telephoneにハイフンが含まれていると購入できない' do
-        @item_buy.telephone = 000-0000-0000
+        @item_buy.telephone = 0o00 - 0o000 - 0o000
         @item_buy.valid?
-        expect(@item_buy.errors.full_messages).to include("Telephone is invalid")
+        expect(@item_buy.errors.full_messages).to include('Telephone is invalid')
       end
 
       it 'telephoneの桁数が12桁以上だと購入できない' do
-        @item_buy.telephone = 000000000000
+        @item_buy.telephone = 0o00000000000
         @item_buy.valid?
-        expect(@item_buy.errors.full_messages).to include("Telephone is invalid")
+        expect(@item_buy.errors.full_messages).to include('Telephone is invalid')
       end
     end
   end

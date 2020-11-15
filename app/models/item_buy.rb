@@ -4,7 +4,7 @@ class ItemBuy
 
   with_options presence: true do
     validates :token
-    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :street_number
@@ -15,4 +15,4 @@ class ItemBuy
     buy = Buy.create(user_id: user_id, item_id: item_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, street_number: street_number, building_name: building_name, telephone: telephone, buy_id: buy.id)
   end
-end  
+end
