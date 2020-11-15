@@ -4,11 +4,11 @@ class ItemBuy
 
   with_options presence: true do
     validates :token
-    validates :postal_code, numericality: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :street_number
-    validates :telephone, numericality: { with: /\A\d{10,11}\z/ }
+    validates :telephone, format: { with: /\A\d{10,11}\z/ }
   end
 
   def save
