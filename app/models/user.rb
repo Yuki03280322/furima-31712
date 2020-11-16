@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :buys
 
   validates :email, uniqueness: { case_sensitive: true }
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i }
   validates :password_confirmation, :password, confirmation: true
 
   with_options presence: true do
