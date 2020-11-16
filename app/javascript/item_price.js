@@ -1,4 +1,4 @@
-if(document.URL.match(/new/) || document.URL.match(/edit/)){
+if(location.pathname === "/items/new" || location.pathname === "/items" || document.URL.match(/edit/)){
   function itemPrice() {
     const priceInput = document.getElementById("item-price");
     priceInput.addEventListener("input", () => {
