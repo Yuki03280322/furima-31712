@@ -6,7 +6,12 @@ RSpec.describe ItemBuy, type: :model do
 
   describe '商品購入' do
     context '商品購入がうまくいくとき' do
-      it 'builing_name以外の全ての項目が存在すれば購入できる' do
+      it 'building_name以外の全ての項目が存在すれば購入できる' do
+        expect(@item_buy).to be_valid
+      end
+
+      it "building_nameが空でも購入できる" do
+        @item_buy.building_name = nil
         expect(@item_buy).to be_valid
       end
     end
